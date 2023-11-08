@@ -1,0 +1,4 @@
+FROM jupyter/minimal-notebook
+WORKDIR /home/jovyan
+COPY jovyan/requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt

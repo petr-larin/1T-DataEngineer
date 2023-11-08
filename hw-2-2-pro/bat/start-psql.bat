@@ -1,0 +1,1 @@
+docker exec -it pg-2-2-pro psql -U postgres -d testdb

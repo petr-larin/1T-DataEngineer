@@ -1,0 +1,1 @@
+docker exec -it ch-2-8-pro sh /docker-entrypoint-initdb.d/2-read-csv.sh

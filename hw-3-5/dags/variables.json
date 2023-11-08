@@ -1,0 +1,4 @@
+{
+    "currencies": "USD, EUR, CNY",
+    "api_url": "api.exchangerate.host"
+}

@@ -1,0 +1,1 @@
+docker exec -it pg psql -U peter -d junior_script

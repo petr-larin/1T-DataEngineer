@@ -1,0 +1,42 @@
+name: homework-3-3-pro
+services:
+
+  db:
+    image: postgres
+    container_name: pg-3-3-pro
+    environment:
+      POSTGRES_DB: "quotes"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./initdb:/docker-entrypoint-initdb.d
+      - vol-3-3-pro:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d quotes"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+
+  jupyter:
+    #image: jupyter/minimal-notebook
+    container_name: jupyter
+    depends_on:
+      db:
+        condition: service_healthy
+    build:
+      context: .
+      dockerfile: dockerfile-jupyter
+    environment:
+      JUPYTER_ALLOW_INSECURE_WRITES: "1"
+      JUPYTER_TOKEN: "1010"
+      DOCKER_STACKS_JUPYTER_CMD: "nbclassic"
+    volumes:
+      - ./jovyan:/home/jovyan
+    ports:
+      - "8887:8888"
+
+volumes:
+  vol-3-3-pro:

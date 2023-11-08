@@ -1,0 +1,5 @@
+config/
+congig/
+logs/
+plugins/
+__pycache__/

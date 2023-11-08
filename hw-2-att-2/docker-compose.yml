@@ -1,0 +1,22 @@
+version: "3.8"
+name: homework-2-att-2
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: ch-2-att-2
+    networks:
+        - clickhouse
+    ulimits:
+        nofile:
+          soft: 262144
+          hard: 262144 
+    ports:
+      - "8123:8123"
+    volumes:
+      - vol-2-att-2:/var/lib/clickhouse
+      - ./initdb:/docker-entrypoint-initdb.d
+
+volumes:
+  vol-2-att-2:
+networks:
+  clickhouse:

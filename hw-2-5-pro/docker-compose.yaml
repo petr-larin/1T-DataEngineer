@@ -1,0 +1,23 @@
+name: homework-2-5-pro
+services:
+  db:
+    image: postgres:latest
+    container_name: pg-2-5-pro
+    environment:
+      POSTGRES_DB: "testdb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./pg_initdb/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - vol-2-5-pro:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d testdb"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  vol-2-5-pro:

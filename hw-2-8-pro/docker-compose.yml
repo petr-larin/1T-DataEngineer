@@ -1,0 +1,22 @@
+version: "3.8"
+name: homework-2-8-pro
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:latest
+    container_name: ch-2-8-pro
+    networks:
+        - clickhouse
+    ulimits:
+        nofile:
+          soft: 262144
+          hard: 262144 
+    ports:
+      - "8123:8123"
+    volumes:
+      - vol-2-8-pro:/var/lib/clickhouse
+      - ./initdb:/docker-entrypoint-initdb.d
+
+volumes:
+  vol-2-8-pro:
+networks:
+  clickhouse:

@@ -1,0 +1,42 @@
+# version: "3"
+# From Docker Compose documentation:
+# "The top-level version property is defined 
+# by the Compose Specification for backward compatibility."
+#
+name: homework-1-3-pro
+services:
+  db:
+    image: postgres:latest
+    container_name: pg-1-3-pro
+    environment:
+      POSTGRES_DB: "testdb"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./pg_initdb:/docker-entrypoint-initdb.d:ro
+      - vol-1-3-pro:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d testdb"]
+      interval: 5s
+      timeout: 10s
+      retries: 3
+      #start-period: 5s
+      #start-interval: 2s
+    expose:
+      - "5432"
+  python:
+    container_name: py-1-3-pro
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./py_app:/usr/src/app
+    build:
+      context: .
+      dockerfile: dockerfile
+
+volumes:
+  vol-1-3-pro:
