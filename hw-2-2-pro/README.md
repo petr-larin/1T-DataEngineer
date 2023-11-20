@@ -8,12 +8,12 @@ SQL-cкрипт на создание таблиц находится в пап�
 
 Сборка и запуск контейнера:
 
-![](/readme_images/1-startup.png)
+![](readme_images/1-startup.png)
 
 Контейнер в Docker Desktop:
 
-![](/readme_images/2-status.png)
+![](readme_images/2-status.png)
 
 Обращение к БД:
 
-![](/readme_images/3-psql.png)
+![](readme_images/3-psql.png)
