@@ -1,0 +1,5 @@
+.ipynb_checkpoints/
+csv/
+docker-hadoop-hive-parquet/
+query_postgres.sql
+query_postgres.png
