@@ -24,4 +24,4 @@ promo_income - доход с продаж в дни акций,
 
 promo_income/fact_income - отношение дохода с продаж в дни акций к общему доходу с продаж за месяц
 
-![](/erd/erd-2-5-pro.drawio.png)
+![](erd/erd-2-5-pro.drawio.png)
