@@ -20,24 +20,24 @@
 
 Без него при первоначальном запуске проекта появляется ошибка:
 
-![](/readme_images/1-error.png)
+![](readme_images/1-error.png)
 
 говорящая о неготовности сервера postgres. Эта ошибка не устранялась просто указанием на зависимость от `db` или указанием на зависимость с тегом `service_started`. Соответственно, в описание контейнера postgres добавлен раздел `healthcheck`.
 
 Проект запускается командой `docker-compose up -d` из папки, содержащей `docker-compose.yaml`:
 
-![](/readme_images/2-startup.png)
+![](readme_images/2-startup.png)
 
 Контейнеры появляются в Docker Desktop, при этом контейнер python после обработки скрипта переходит в статус Exited:
 
-![](/readme_images/3-status.png)
+![](readme_images/3-status.png)
 
 Результаты работы скрипта можно посмотреть в журнале контейнера:
 
-![](/readme_images/4-logs.png)
+![](readme_images/4-logs.png)
 
 В не-ПРО части задания также предлагается написать специальную команду docker, которая позволит подключаться к работающему контейнеру, запускать интерфейс psql и вносить новые данные «на лету». В качестве такой команды можно использовать
 ```
 docker exec -it pg-1-3-pro psql -U postgres -d testdb
 ```
-![](/readme_images/5-psql.png)
+![](readme_images/5-psql.png)
